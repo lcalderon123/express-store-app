@@ -5,10 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var title = require('express-title');
+//var apikey = require("apikey");
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var manage = require('./routes/manage');
 var addItem = require('./routes/add');
+var saveItem = require('./routes/save_item');
 
 var app = express();
 
@@ -28,7 +30,16 @@ app.use(title());
 
 app.use('/', index);
 app.use('/add', addItem);
-app.use('/users', users);
+app.use('/manage', manage);
+app.use('/save_item', saveItem);
+
+/*app.use(apikey(auth, 'my realm'));
+function auth (key, fn) {
+  if ('test' === key)
+    fn(null, { id: '1', name: 'John Dorian'})
+  else
+    fn(null, null)
+}*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

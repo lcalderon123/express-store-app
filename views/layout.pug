@@ -4,10 +4,11 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
-    - var menus = [{name:'/', title:"Home"},{name:'/add', title:"Add"}, {name:'/users', title:"Users"}]
+    - var menus = [{name:'/', title:"Home"},{name:'/add', title:"Add"}, {name:'/manage', title:"Manage"}]
 
     #ul
       each menu in menus
         - var active = active_page==menu.name?"avtive":""
         li #[a(href=menu.name, class={active}) #{menu.title}]
+
+    block content
